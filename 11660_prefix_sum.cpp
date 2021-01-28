@@ -27,7 +27,7 @@ int main(){
         
         imsi_sum += (arr[t1][t2]-arr[t1][f2-1] - arr[f1-1][t2]+arr[f1-1][f2-1]);
         
-        cout<<imsi_sum<<"\n";
+        cout<<imsi_sum<<'\n';
     }
 
 
