@@ -3,4 +3,4 @@
 Repository for my acmicpc algorithm
 ===
 
-currently gold 4 in acmicpc.. update later..
+currently gold 3 in acmicpc.. update later..
