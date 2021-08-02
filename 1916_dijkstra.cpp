@@ -8,8 +8,8 @@
 using namespace std;
 
 int n,m;
-vector<pair<int, int> > arr[1001];
-int d[1001];
+vector<pair<int, int> > arr[801];
+int d[801];
 
 
 void dijkstra(int start){
