@@ -13,11 +13,12 @@ int d[801];
 
 
 void dijkstra(int start){
-  priority_queue<pair<int,int>>pq;
+  using T = pair<int,int>;
+  priority_queue<T, vector<T>,greater<T>>pq;
   pq.push({0,start});
   d[start] = 0;
   while(pq.size()!= 0){
-    int dist = -pq.top().first;
+    int dist = pq.top().first;
     int now = pq.top().second;
     pq.pop();
     if(d[now]<dist)continue;
@@ -25,7 +26,7 @@ void dijkstra(int start){
       int cost = dist + arr[now][i].second;
       if(cost < d[arr[now][i].first]){
         d[arr[now][i].first] = cost;
-        pq.push(make_pair(-cost,arr[now][i].first));
+        pq.push(make_pair(cost,arr[now][i].first));
       }
     }
     
