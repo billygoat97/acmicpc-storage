@@ -1,40 +1,40 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
-int lotto[6];
-void getCombi(int start, int depth,int* array,int n);
-int main(){
+vector<int> v;
+int arr[6] ={0,};
+void recursion(int num,int idx){
 
-    int n;
-
-    cin >> n;
-    while(n != 0){
-
-        int *array = new int[n];
-        for(int i = 0; i<n; i++){
-            cin >> array[i];
+    if(num == 6){
+        for(int i = 0; i<6; i++){
+            cout<<arr[i]<<" ";
         }
-        
-        getCombi(0,0,array,n);
-
-
-        delete []array;
-        cin >> n;
+        cout<<"\n";
+        return;
     }
-    return 0;
+    for(int i =idx; i<v.size();i++){
+        arr[num] = v[i];
+        recursion(num+1,i+1);
+    }
+
 }
 
-void getCombi(int start, int depth,int* array,int n) {
-	if (depth == 6) {
-		for (int i = 0; i < 6; i++) {
-			cout << lotto[i] << " ";
-		}
-		cout << endl;
-		return;
-	}
-	//start부터 k-1 까지 순서
-	for (int i = start; i < n; i++) {
-		lotto[depth] = array[i];
-		getCombi(i+1, depth+1,array,n);
-	}
+int main(){
+
+    while(1){
+        int n;
+        cin >>n;
+        if(n == 0)break;
+        v.clear();
+        for(int i = 0; i<n; i++){
+            int inp;
+            cin >> inp;
+            v.push_back(inp);
+        }
+        recursion(0,0);
+        cout<<"\n";
+    }
+
+
 }

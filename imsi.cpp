@@ -4,29 +4,37 @@
 
 using namespace std;
 
+unsigned long long arr[1001];
+unsigned long long check[10001];
+int n,m;
 int main(){
-    int n;
-    string str;
-
-    cin>>n;
-    cin >>str;
-
-    int len = str.size();
-    char bigyo[len];
-    for( int i= 0; i<len;i++){
-        bigyo[i] = str[i];
-    }
-    for(int i = 1; i<n; i++){
-        cin >> str;
+    
+    cin >> n;
+    for(int i = 0; i<n ;i++){
+        int len;
+        cin >> len;
         for(int j = 0; j<len;j++){
-            if(str[j] != bigyo[j]){
-                bigyo[j] = '?';
-            }
+            int inp;
+            cin >> inp;
+            arr[i] += (long long)1<<(inp-1);
         }
-        
     }
-    for(int i = 0 ;i<len;i++)
-    cout<<bigyo[i];
-    cout<<endl;
-    return 0;
+    cin >> m; 
+    for(int i = 0; i<m ;i++){
+        int len;
+        cin >> len;
+        for(int j = 0; j<len;j++){
+            int inp;
+            cin >> inp;
+            check[i] += (long long)1<<(inp-1);
+        }
+    }
+    for(int i = 0; i<m; i++){
+        int cnt = 0;
+        for(int j = 0; j<n; j++){
+            if((check[i] == (arr[j] | check[i])) && (check[i]!= 0 && arr[j]!= 0))cnt++;
+        }
+        cout<<cnt<<endl;
+    }
+
 }
