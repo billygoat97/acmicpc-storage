@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
 int main(void){
@@ -20,51 +21,30 @@ int main(void){
     }
     array[1] = 0;
     int c= 2;
-    int prime_count = 0;
-    int prime_array[1000000];
+    vector<long long>prime;
+    prime.push_back(0);
     while(c<=m){
         if(array[c]==c){
-            prime_array[prime_count] = c;
-            prime_count++;
+            prime.push_back(prime[prime.size()-1] + c);
         }
         c++;
     }
     int n;
-    scanf("%d",&n);
+    cin >> n;
     int imsi = 0;
-    int p_count;
-    for( int count = 0; count<prime_count; count++){
-        if(prime_array[count]>n){
-            p_count = count;
-            break;
-        }
-    }
-    // printf("count: %d\n",p_count);
-    // for(int i = 1; i<10;i++){
-    //     printf("%d ", prime_array[i]);
-    // }
-    // printf("\n");
-
-    int possible_count = 0;
-    for(int i = 0; i< p_count; i++){
-        for(int j = i;j< p_count;j++){
-            imsi += prime_array[j];
-            if(imsi == n){
-                possible_count++;
-                imsi = 0;
-                break;
-            }else if(imsi> n){
-                imsi = 0;
-                break;
-            }
-        }
-    }
-        
-    printf("%d\n", possible_count);
     
-    delete [] array;
-
-
-
-return 0;
+    int s = 0, e = 1;
+    while(true){
+        if(prime[e] - prime[s] == n){
+            imsi ++;
+            s ++;
+        }else if(prime[e] - prime[s] > n){
+            s++;
+        }else if(prime[e] - prime[s] < n){
+            e ++;
+        }
+        if(e == prime.size()|| prime[e] - prime[e-1] > n)break;
+    }
+    cout<<imsi<<"\n";
+    return 0;
 }
