@@ -5,11 +5,13 @@
       "name": "C/C++ Runner: Debug Session",
       "type": "cppdbg",
       "request": "launch",
-      "args": [],
+      "args": [
+        ""
+      ],
       "stopAtEntry": false,
-      "cwd": "c:\\Users\\김기현\\Desktop\\acmicpc-storage",
+      "cwd": "c:/Users/김기현/Desktop/acmicpc-storage",
       "environment": [],
-      "program": "c:\\Users\\김기현\\Desktop\\acmicpc-storage\\build\\Debug\\outDebug",
+      "program": "c:/Users/김기현/Desktop/acmicpc-storage/build/Debug/outDebug",
       "internalConsoleOptions": "openOnSessionStart",
       "MIMode": "gdb",
       "miDebuggerPath": "C:\\mingw64\\bin\\gdb.exe",
